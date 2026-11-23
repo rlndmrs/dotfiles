@@ -1,0 +1,12 @@
+alias vi='vim'
+alias ls='ls -F --color'
+export VISUAL='vim'
+export EDITOR='vim'
+set -o emacs
+PS1='\h \w\$ '
+
+alias fd=fdfind
+alias lg=lazygit
+eval "$(fzf --bash)"
+export PATH=$HOME/.local/bin:$HOME/dotfiles/local/bin:$PATH
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

@@ -1,0 +1,82 @@
+set encoding=utf-8
+set ruler
+set laststatus=2
+set mouse=a				" mouse support
+set nowrap 				" don't wrap long lines
+set cc=80 				" show line on 80 chars
+set scrolloff=3				" always show lines above/below
+set sidescroll=3
+set noexpandtab
+set tabstop=8
+set shiftwidth=8
+set softtabstop=8
+set backspace=indent,eol,start		" normal backspace behaviour
+set autowrite				" autosave
+set ignorecase				" ignore case in search
+set smartcase				" search case senstive with capitals
+set incsearch				" search while type
+set showmatch				" show matche
+set hlsearch				" show all macthes
+set splitbelow
+set splitright
+set fillchars+=vert:│ 			" make split less ugly
+set timeoutlen=300			" timeout leader key/command
+
+packadd! comment			" comment with gcc
+packadd! hlyank				" hilight yanks
+
+" clipboard
+if !empty($SSH_CONNECTION)
+  let g:osc52_force_avail = 1
+  packadd osc52
+  set clipmethod+=osc52
+
+  nnoremap <expr> y  v:register == '"' ? '"+y'  : '"' . v:register . 'y'
+  xnoremap <expr> y  v:register == '"' ? '"+y'  : '"' . v:register . 'y'
+  nnoremap <expr> yy v:register == '"' ? '"+yy' : '"' . v:register . 'yy'
+else
+  set clipboard^=unnamed,unnamedplus
+endif
+
+" leader key
+let mapleader = "\<space>"
+
+" detect file type
+filetype plugin indent on
+
+" show invisible chars
+set listchars=tab:▸\ ,eol:¬,space:.
+nnoremap <leader>l :set list!<CR>
+
+" colors
+syntax enable
+colorscheme sorbet
+
+" KNF style(9) rule
+"set cindent
+"set cinoptions=:0,l1,t0,g0,(0,w1,W4,+4
+
+" save with ctrl s (also in insert mode and then leave insert mode)
+map <C-s> :update<cr>
+imap <C-s> <ESC>:update<cr>
+
+" disable Ex mode
+map Q <Nop>
+
+" change window also with tab
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>Ws
+
+" clear search highlight
+nmap <silent> <Return> :noh<cr>
+
+" cursorline only in normal mode
+set cul
+autocmd InsertEnter * set nocul
+autocmd InsertLeave * set cul
+
+" avoid accidental pageup/down
+for key in ['<S-Up>', '<S-Down>']
+  execute 'noremap' key '<Nop>'
+  execute 'inoremap' key '<Nop>'
+endfor

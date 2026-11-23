@@ -1,0 +1,39 @@
+#!/bin/bash
+
+sudo apt install curl vim-gtk3 git mc fzf ripgrep fd-find wl-clipboard \
+	rclone tree skanpage sane-utils tmux alacritty
+
+ln -s $(pwd)/env ~/.env
+#echo '. ~/.env' >> ~/.bashrc
+
+mkdir -p ~/.config
+
+mkdir -p ~/.vim
+ln -s $(pwd)/vim/vimrc ~/.vimrc
+
+mkdir -p ~/.config/tmux
+ln -s $(pwd)/config/tmux/tmux.conf ~/.config/tmux/
+
+mkdir -p ~/.config/mc
+cp $(pwd)/config/mc/ini ~/.config/mc/
+ln -s $(pwd)/config/mc/panels.ini ~/.config/mc/
+
+mkdir -p ~/.config/alacritty
+ln -s $(pwd)/config/alacritty/alacritty.toml ~/.config/alacritty/
+
+ln -s $(pwd)/config/xkb ~/.config
+
+FONT_DIR="$HOME/.local/share/fonts"
+
+if ! ls "$FONT_DIR" 2>/dev/null | grep -qi "JetBrainsMonoNerdFont-Regular"; then
+    cd ~/Downloads || exit 1
+    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/JetBrainsMono.zip
+    unzip -o JetBrainsMono.zip -d "$FONT_DIR/"
+    fc-cache -f "$FONT_DIR"
+fi
+
+mkdir -p ~/.config/systemd/user
+ln -s $(pwd)/config/systemd/user/ssh-agent.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now ssh-agent.service
+ln -s $(pwd)/ssh/config ~/.ssh
