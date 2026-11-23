@@ -3,7 +3,6 @@ set ruler
 set laststatus=2
 set mouse=a				" mouse support
 set nowrap 				" don't wrap long lines
-set cc=80 				" show line on 80 chars
 set scrolloff=3				" always show lines above/below
 set sidescroll=3
 set noexpandtab
@@ -50,7 +49,10 @@ nnoremap <leader>l :set list!<CR>
 
 " colors
 syntax enable
-colorscheme sorbet
+set termguicolors
+set background=dark
+colorscheme lunaperche
+nnoremap <leader>v :let &background = (&background ==# 'dark' ? 'light' : 'dark')<CR>
 
 " KNF style(9) rule
 "set cindent
