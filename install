@@ -7,6 +7,8 @@ ln -s $(pwd)/env ~/.env
 #echo '. ~/.env' >> ~/.bashrc
 
 mkdir -p ~/.config
+ln -s $(pwd)/config/user-dirs.dirs ~/.config/
+xdg-user-dirs-update
 
 mkdir -p ~/.vim
 ln -s $(pwd)/vim/vimrc ~/.vimrc
