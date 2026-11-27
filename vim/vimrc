@@ -40,13 +40,6 @@ endif
 " leader key
 let mapleader = "\<space>"
 
-" detect file type
-filetype plugin indent on
-
-" show invisible chars
-set listchars=tab:▸\ ,eol:¬,space:.
-nnoremap <leader>l :set list!<CR>
-
 " colors
 syntax enable
 set termguicolors
@@ -54,9 +47,12 @@ set background=dark
 colorscheme lunaperche
 nnoremap <leader>v :let &background = (&background ==# 'dark' ? 'light' : 'dark')<CR>
 
-" KNF style(9) rule
-"set cindent
-"set cinoptions=:0,l1,t0,g0,(0,w1,W4,+4
+" detect file type
+filetype plugin indent on
+
+" show invisible chars
+set listchars=tab:▸\ ,eol:¬,space:.
+nnoremap <leader>l :set list!<CR>
 
 " save with ctrl s (also in insert mode and then leave insert mode)
 map <C-s> :update<cr>

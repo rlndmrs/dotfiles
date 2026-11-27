@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install curl vim-gtk3 git mc fzf ripgrep fd-find wl-clipboard \
+sudo apt install curl vim-gtk3 emacs git mc fzf ripgrep fd-find wl-clipboard \
 	rclone tree skanpage sane-utils tmux alacritty
 
 ln -s $(pwd)/env ~/.env
@@ -12,6 +12,8 @@ xdg-user-dirs-update
 
 mkdir -p ~/.vim
 ln -s $(pwd)/vim/vimrc ~/.vimrc
+
+ln -s $(pwd)/emacs ~/.emacs
 
 mkdir -p ~/.config/tmux
 ln -s $(pwd)/config/tmux/tmux.conf ~/.config/tmux/
