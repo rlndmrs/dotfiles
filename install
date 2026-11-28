@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt install curl vim-gtk3 emacs git mc fzf ripgrep fd-find wl-clipboard \
-	rclone tree skanpage sane-utils tmux alacritty
+sudo apt install curl vim-gtk3 git mc fzf ripgrep fd-find wl-clipboard \
+	rclone tree tmux alacritty gnome-shell-extension-manager
 
 ln -s $(pwd)/env ~/.env
 #echo '. ~/.env' >> ~/.bashrc
