@@ -43,9 +43,8 @@ let mapleader = "\<space>"
 " colors
 syntax enable
 set termguicolors
-set background=dark
-colorscheme lunaperche
-nnoremap <leader>v :let &background = (&background ==# 'dark' ? 'light' : 'dark')<CR>
+set background=light
+colorscheme zenbones
 
 " detect file type
 filetype plugin indent on

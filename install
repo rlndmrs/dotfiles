@@ -10,8 +10,12 @@ mkdir -p ~/.config
 ln -s $(pwd)/config/user-dirs.dirs ~/.config/
 xdg-user-dirs-update
 
+git clone https://github.com/tpope/vim-vinegar.git \
+	~/.vim/pack/tpope/start/vim-vinegar
+git clone https://github.com/zenbones-theme/zenbones.nvim.git \
+	~/.vim/pack/themes/start/zenbones.nvim
 mkdir -p ~/.vim
-ln -s $(pwd)/vim/vimrc ~/.vimrc
+ln -s $(pwd)/vimrc ~/.vimrc
 
 ln -s $(pwd)/emacs ~/.emacs
 
